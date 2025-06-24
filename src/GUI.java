@@ -4,6 +4,36 @@ import java.awt.*;
 public class GUI {
 
    public GUI() {
+       JPanel panel = new JPanel();
+       panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+       JButton btnLaden = new JButton("Laden");
+       JButton btnStarten = new JButton("Starten");
+       JButton btnBeenden = new JButton("Beenden");
+       panel.add(btnLaden);
+       panel.add(Box.createVerticalStrut(10));
+       panel.add(btnStarten);
+       panel.add(Box.createVerticalStrut(10));
+       panel.add(btnBeenden);
+
+       JDialog dialog = new JDialog();
+       dialog.setTitle("Start-Menu");
+       dialog.setModal(true);
+       dialog.getContentPane().add(panel);
+       dialog.pack();
+       dialog.setLocationRelativeTo(null);
+       
+
+       btnLaden.addActionListener(e -> {
+           // Lade-Logik hier
+           dialog.dispose();
+       });
+       btnStarten.addActionListener(e -> {
+           // Start-Logik hier
+           dialog.dispose();
+       });
+       btnBeenden.addActionListener(e -> System.exit(0));
+
+       dialog.setVisible(true);
                 JFrame frame = new JFrame("Schachbrett");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setSize(600, 600);
